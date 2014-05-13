@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://www.highcharts.me/demo/index.php?p=12 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<title>《城市猎人》报表后台</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="stylesheet" type="text/css" href="index_files/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="index_files/style.css">
+	<link href="index_files/bdsstyle.css" rel="stylesheet" type="text/css"></head>
+<body>
+	<div id="navigater">
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner"><a href="#">《城市猎人》报表后台</a></div>
+		</div>
+	</div>
+	
+	<div id="demo">
+		<div id="demo_menu">
+			<h3>运营数据</h3>
+<ul index="line">
+	<li id="10"><a href="#">推广数据</a></li>
+	<li id="11"><a href="#">运营数据</a></li>
+	<li id="12"><a href="#">实时数据</a></li>
+</ul>
+<h3>应用数据</h3>
+<ul index="line">
+	<li id="13"><a href="#">货币产出及回收</a></li>
+	<li id="14"><a href="#">任务数据</a></li>
+	<li id="15"><a href="#">实时数据</a></li>
+</ul>
+<h3>用户分析</h3>
+<h3>商家任务查询</h3>
+<h3>权限管理</h3>
+<ul index="line">
+	<li id="16" class="cur"><a href="#">账号生成</a></li>
+	<li id="17"><a href="#">账号权限</a></li>
+	<li id="18"><a href="#">操作记录</a></li>
+</ul><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><h3>欢迎你，admin</h3><br/>
+</div>
+		<div id="demo_content">
+		  <p class="edit" style="text-align:right">
+          <form class="form-horizontal div-center" action=""  method="post" >
+
+    <div class="control-group" style="margin-top:40px; margin-left:20px;">
+        <label class="control-label">账号</label>
+        <div class="controls">
+            <input type="text" id="goods_name" name="nick_name" placeholder="请输入账号" value="">
+        </div>
+    </div>
+
+    <div class="control-group" style="margin-left:20px;">
+        <label class="control-label" for="inputEmail">密码</label>
+        <div class="controls">
+            <input type="text" id="goods_name" name="phone" placeholder="请输入密码" value="">
+        </div>
+    </div>
+    
+    <div class="control-group" style="margin-left:20px;">
+        <label class="control-label" for="inputEmail">确认密码</label>
+        <div class="controls">
+            <input type="text" id="goods_name" name="psd" placeholder="确认密码" value="">
+        </div>
+    </div>
+    
+    <div class="controls" style="margin-left:100px;">
+        <button class="btn btn-primary" theme="default">生成</button>
+    </div>
+</form> 
+          </p>
+		
+		  <div id="show_code" style="display:none">
+				<h4>Javascript 代码</h4>
+				<div class="code_space"></div></div></div>
+</div>
+		<div class="clear"></div>		
+	
+	<div id="footer" class="footer_w">
+		<p>
+	Copyright © 2013 - 2014 CityHunyer All Rights Reserved.
+</p>	</div>
+	<script src="index_files/hm.js"></script><script type="text/javascript" src="index_files/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="index_files/bootstrap-dropdown.js"></script>
+	<script type="text/javascript" src="index_files/jquery.scrollUp.min.js"></script>
+	<script type="text/javascript" src="index_files/highcharts.js"></script>
+	<script type="text/javascript" src="index_files/exporting.js"></script>
+	<script type="text/javascript" src="index_files/line-time-series.js"></script>
+	<script>
+		String.prototype.replaceAll = function(s1,s2) { 
+    		return this.replace(new RegExp(s1,"gm"),s2); 
+		}
+		
+		$(document).ready(function(){
+			var current = location.pathname.split("/")[1];
+			if(current == null || current == "index.php" || current=="") current = "index";
+			$("#navigater").find("li[index=\""+current+"\"]").addClass("active");		
+			var leftHeight = $("#demo_menu").height();
+			$.scrollUp({
+		        scrollName: 'scrollUp', // Element ID
+		        scrollDistance: 300, // Distance from top/bottom before showing element (px)
+		        scrollFrom: 'top', // 'top' or 'bottom'
+		        scrollSpeed: 100, // Speed back to top (ms)
+		        easingType: 'linear', // Scroll to top easing (see http://easings.net/)
+		        animation: 'fade', // Fade, slide, none
+		        animationInSpeed: 200, // Animation in speed (ms)
+		        animationOutSpeed: 200, // Animation out speed (ms)
+		        scrollTitle: false, // Set a custom <a> title if required. Defaults to scrollText
+		        scrollImg: true, // Set true to use image
+		        activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+		        zIndex: 2147483647 // Z-Index for the overlay
+			});
+						
+			$("#demo_menu li.cur").removeClass("cur");
+			$("#demo_menu li[id='12']").addClass("cur");
+			
+			$("button.btn").click(function(){
+					var theme = $(this).attr("theme");
+					var id = $(this).attr("id");
+				
+					if(theme != null) {
+						window.location.href="index.php?p=12&theme="+theme;
+					}
+					else if(id != null) {
+						if(id=="code") {
+							$.get("demo/line/line-time-series.js",function(result){
+									$("#show_code").show();
+									result = result.replaceAll("<","&lt;").replaceAll(">","&gt;");
+									$(".code_space").html(result);
+									$(".hi").show();
+									setTimeout(autoSize,10);
+							});
+						}
+						else if(id == "theme_code"){
+							$.get("js/themes/default.js",function(result){
+									$("#show_code").show();
+									result = result.replaceAll("<","&lt;").replaceAll(">","&gt;");
+									$(".code_space").html(result);
+									$(".hi").show();
+									setTimeout(autoSize,10);
+							});
+						}
+						else if(id == "edit") {
+							window.open("/test/index.php?from=demo&p=12");
+						}
+					}
+			});
+			$("#demo_url").find("input").bind("click",function(){
+					$(this).select();
+			});
+			
+			function autoSize() {
+				var contentHeight = $("#demo_content").outerHeight();
+				var menuHeight = $("#demo_menu").outerHeight();
+				if(menuHeight < contentHeight) {
+					$("#demo_menu").height(contentHeight);
+				} else {
+					if(contentHeight < leftHeight)
+						contentHeight = leftHeight;
+					$("#demo_menu").height(contentHeight);
+				}
+			}
+		});
+		
+	</script>
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?5eb70994aa0441c354cdad449a75dc1f";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	<!-- Baidu Button BEGIN -->
+	<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=703434" src="index_files/bds_s_v2.js"></script>
+	<script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript">
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+	</script>
+	<!-- Baidu Button END -->
+
+<a id="scrollUp" href="#top" title="Scroll to top" style="display: none; position: fixed; z-index: 2147483647;"></a><script src="index_files/logger.js"></script>
+</body>
+</html>
